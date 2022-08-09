@@ -1,6 +1,7 @@
 ### project files ###
 node_modules/
 docs/
+.idea
 
 
 ### macOS ###

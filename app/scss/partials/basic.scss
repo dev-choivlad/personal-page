@@ -13,6 +13,15 @@ html, body {
   box-sizing: inherit;
 }
 
+a {
+  display: block;
+}
+
+picture {
+  box-sizing: border-box;
+  display: block;
+}
+
 a, a:visited {
   text-decoration: none;
 }

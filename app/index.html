@@ -6,14 +6,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <link rel="preload" href="/fonts/Heebo-Light.woff" as="font">
+  <link rel="preload" href="/fonts/WorkSans-Medium.woff" as="font">
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <script src="https://unpkg.com/swiper@8.3.2/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
   <!-- Сюда будет всталена ссылка на файл стилей -->
   <!-- inject:css -->
   <!-- endinject -->
 </head>
   <body>
+    @@include('main-menu.html')
     @@include('project.html')
+    @@include('footer.html')
 
     <!-- Сюда будет всталена ссылка на файл скриптов -->
     <!-- inject:js -->

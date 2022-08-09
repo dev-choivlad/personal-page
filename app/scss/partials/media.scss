@@ -1,0 +1,61 @@
+@media screen and (max-width: 768px) {
+  body.lock {
+    overflow: hidden;
+  }
+
+  .burger-wrapper {
+    display: flex;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    top: -2000%;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f3f3f3;
+    overflow: scroll;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all .5s ease-out;
+
+    span {
+      font-size: 25px;
+      padding: 7px 16px;
+      &:not(span:last-child) {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      &:last-child {
+        padding-right: 16px;
+      }
+    }
+  }
+
+  .swiper-pagination.mobile-menu--active {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+    z-index: 5;
+  }
+}
+
+@media screen and(min-width: 1921px) {
+  .swiper-pagination {
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .main-logo__link {
+    font-size: 24px;
+  }
+
+  .main-logo__text {
+    font-size: 16px;
+  }
+}

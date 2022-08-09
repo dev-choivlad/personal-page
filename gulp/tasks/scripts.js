@@ -8,6 +8,9 @@ const paths = require('../paths');
 
 const jsFiles = [
   './././app/js/burger.js',
+  './././app/js/swiper-init.js',
+  './././app/js/anim-on-scroll.js',
+  './././app/js/dynamic-adaptive.js',
 ] // очередность подключения файлов
 
 const scripts = () => {

@@ -1,15 +1,23 @@
 // ---------- variables ------------------------------------
-$max-width: 1920px;
+$max-width: 1440px;
 
 $font-main: "Inter", sans-serif;
 $font-secondary: "Syne", sans-serif;
 
+$bg-color: #f3f3f3;
+//$bg-color: darken(#f3f3f3, 3%);
 $color-primary: #242424;
 $color-secondary: #dcad76;
 
+$font-heading-bold: "WorkSans-Bold", Arial sans-serif;
+$font-heading-regular: "WorkSans-Regular", Arial sans-serif;
+$font-text-regular: "Heebo-Regular", Arial sans-serif;
+$font-text-light: "Heebo-Light", Arial sans-serif;
 
-$parallax-offset: 30vh;
-$content-offset: 40vh;
-$transition-speed: 1.2s;
-$slide-number: 3;
+$padding-desk: 80px 30px 0 30px;
+$padding-mob: 20px 15px;
+$padding-header-footer: 10px 30px;
+$padding-header-footer-m: 15px 30px;
+
+
 

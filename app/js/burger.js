@@ -1,22 +1,21 @@
-const burgerBtn = document.querySelector(".burger-btn");
-const mobileMenu = document.querySelector(".swiper-pagination");
-let bullets;
-setTimeout(() => {
-  bullets = document.querySelectorAll(".swiper-pagination-bullet");
-  console.log(bullets);
-
-  for (let i = 0; i < bullets.length; i++) {
-    bullets[i].addEventListener("click", () => {
-      burgerBtn.classList.toggle("burger-btn--active");
-      mobileMenu.classList.toggle("mobile-menu--active")
-    })
-  }
-}, 1000)
-
+const burgerBtn = document.querySelector(".burger");
+const navMenu = document.querySelector(".nav-menu");
+const navMenuButtons = document.querySelectorAll(".nav-menu__link");
 const body = document.body;
 
 burgerBtn.addEventListener("click", () => {
-  burgerBtn.classList.toggle("burger-btn--active");
-  body.classList.toggle("lock");
-  mobileMenu.classList.toggle("mobile-menu--active");
+  burgerBtn.classList.toggle("active")
+  body.classList.toggle("lock")
+
+  navMenu.classList.toggle("active")
+
+  navMenuButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      burgerBtn.classList.remove("active")
+      body.classList.remove("lock")
+
+      navMenu.classList.remove("active")
+    })
+  })
+
 })

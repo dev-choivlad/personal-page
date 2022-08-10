@@ -1,3 +1,41 @@
+body {
+  background-color: $bg-color;
+}
+
+.img-basic {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  color: $color-primary;
+  background-color: $bg-color;
+  overflow-y: auto;
+}
+
+.content-container {
+  max-width: 1440px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  padding: $padding-desk;
+  overflow-y: auto;
+}
+
+
+
+
+
+
+/*
+
+
 // ****** Basic styles starts ******
 body {
   color: $color-primary;
@@ -116,3 +154,90 @@ body {
   }
 }
 // ****** Main Navigation ends ******
+
+
+
+// ****** Sections shared styles starts ******
+
+// ****** Sections shared styles ends ******
+
+
+
+// ****** Section Main starts ******
+
+// ****** Section Main ends ******
+
+
+// ****** Footer starts ******
+.main-footer {
+  position: absolute;
+  bottom:0;
+  left: 0;
+  max-width: $max-width;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 12px 30px 20px;
+  margin: 0 auto;
+  z-index: 4;
+  background-color: #f3f3f3;
+  //background-color: #dcad76;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    content: "";
+    height: 1px;
+    width: calc(100% - 60px);
+    background-color: rgba(187,187,187,1);
+  }
+}
+
+.main-footer__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: $color-primary;
+
+  span:not(span:last-child) {
+    @include adaptive-font (18, 16);
+    font-family: "WorkSans-Bold", Arial sans-serif;
+    color: inherit;
+    margin-bottom: 10px;
+  }
+  span:last-child {
+    font-size: 12px;
+    font-family: "Heebo-Light", Arial sans-serif;
+    color: inherit;
+  }
+
+  a {
+    @include adaptive-font (15, 13);
+    font-family: "Heebo-Light", Arial sans-serif;
+    color: inherit;
+    transition: color .3s ease-in-out;
+
+    &:hover {
+      color: $color-secondary;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .column-list {
+    display: flex;
+    a:first-child {
+      margin-right: 10px;
+    }
+a {
+      transition: all .3s ease-out;
+      &:hover {
+        transform: rotate(12deg);
+      }
+    }
+  }
+}
+// ****** Footer ends ******
+*/

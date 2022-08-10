@@ -17,5 +17,4 @@ burgerBtn.addEventListener("click", () => {
       navMenu.classList.remove("active")
     })
   })
-
 })

@@ -19,14 +19,156 @@ body {
   overflow-y: auto;
 }
 
-.content-container {
+.main-content {
   max-width: $max-width;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 130px);
   margin: 0 auto;
   padding: $padding-desk;
   overflow-y: auto;
 }
+
+.main-content--first {
+  display: flex;
+  align-items: center;
+  padding: $padding-desk-first-section;
+  height: calc(100vh - 80px);
+}
+
+.section-block {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.flex-two-column {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.flex-column {
+  max-width: 430px;
+  width: 48%;
+}
+
+// ******** Main Section starts ********
+.main-photo {
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.main-about {
+  //border: 1px solid red;
+
+  h1,
+  h3 {
+    font-family: $font-heading-bold;
+  }
+  h1 {
+    @include adaptive-font(40, 28);
+    margin-bottom: 15px
+  }
+  h3 {
+    font-family: $font-heading-medium;
+    @include adaptive-font(24, 20);
+    margin-bottom: 5px
+  }
+
+  p {
+    font-family: $font-text-regular;
+    @include adaptive-font(16, 14);
+    line-height: 1.6em;
+    margin-bottom: 20px
+  }
+}
+
+.main-about__actions {
+  display: flex;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 35px;
+    font-family: $font-text-regular;
+    @include adaptive-font(16, 14);
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    border-radius: $border-radius-btn;
+    transition: all .3s ease-in-out;
+    background-color: $bg-color;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+    &:hover {
+      color: $color-secondary;
+      border-color: $color-secondary
+    }
+  }
+}
+
+.scroller {
+  position: relative;
+  height: 1.3em;
+  line-height: 1.3em;
+  overflow: hidden;
+  width: 100%;
+
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: slide 5s infinite cubic-bezier(.01,.97,.78,1) 2.5s;
+  }
+}
+
+/*@keyframes slide {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -1.3em;
+    //animation-delay: 2s;
+  }
+  50% {
+    top: -2.6em;
+  }
+  75% {
+    top: -3.9em;
+  }
+}*/
+@keyframes slide {
+  0% {
+    top: 0;
+  }
+  10% {
+    top: 0;
+  }
+  20% {
+    top: -1.3em;
+    //animation-delay: 2s;
+  }
+  30% {
+    top: -1.3em;
+  }
+  40% {
+    top: -2.6em;
+  }
+  50% {
+    top: -2.6em;
+  }
+  60% {
+    top: -3.9em;
+  }
+  70% {
+    top: -3.9em;
+  }
+}
+// ******** Main Section ends ********
 
 
 

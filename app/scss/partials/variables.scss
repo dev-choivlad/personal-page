@@ -9,14 +9,19 @@ $color-primary: #242424;
 $color-secondary: #dcad76;
 
 $font-heading-bold: "WorkSans-Bold", Arial sans-serif;
-$font-heading-regular: "WorkSans-Regular", Arial sans-serif;
+$font-heading-medium: "WorkSans-Medium", Arial sans-serif;
 $font-text-regular: "Heebo-Regular", Arial sans-serif;
 $font-text-light: "Heebo-Light", Arial sans-serif;
 
-$padding-desk: 80px 30px 0 30px;
-$padding-mob: 20px 15px;
+$padding-desk-first-section: 80px 30px 20px 30px;
+$padding-mob-first-section: 80px 15px 15px 15px;
+$padding-desk: 20px 30px;
+$padding-mob: 15px;
 $padding-header-footer: 10px 30px;
-$padding-header-footer-m: 15px 30px;
+$padding-header-footer-m: 10px 15px;
+
+
+$border-radius-btn: 6px;
 
 
 

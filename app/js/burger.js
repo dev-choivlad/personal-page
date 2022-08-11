@@ -1,6 +1,6 @@
 const burgerBtn = document.querySelector(".burger");
 const navMenu = document.querySelector(".nav-menu");
-const navMenuButtons = document.querySelectorAll(".nav-menu__link");
+//const navMenuButtons = document.querySelectorAll(".nav-menu__link"); // в файле "nav-btn-states-toggle.js" кнопки определены как navButtons
 const body = document.body;
 
 burgerBtn.addEventListener("click", () => {
@@ -9,7 +9,7 @@ burgerBtn.addEventListener("click", () => {
 
   navMenu.classList.toggle("active")
 
-  navMenuButtons.forEach((button) => {
+  navButtons.forEach((button) => {
     button.addEventListener("click", () => {
       burgerBtn.classList.remove("active")
       body.classList.remove("lock")

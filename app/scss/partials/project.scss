@@ -8,6 +8,10 @@ body {
   object-fit: contain;
 }
 
+.img-basic--icon {
+  width: 20px;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -22,17 +26,24 @@ body {
 .main-content {
   max-width: $max-width;
   width: 100%;
-  height: calc(100vh - 130px);
+  //height: calc(100vh - 130px);
+  //height: 25%;
   margin: 0 auto;
   padding: $padding-desk;
-  overflow-y: auto;
+  //overflow-y: auto;
 }
 
 .main-content--first {
   display: flex;
   align-items: center;
   padding: $padding-desk-first-section;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 87px);
+}
+
+.main-content--second {
+  //height: 100%;
+  //overflow: hidden;
+  //overflow: scroll;
 }
 
 .section-block {
@@ -42,13 +53,14 @@ body {
   margin: 0 auto;
 }
 
-.flex-two-column {
+.flex-main {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  //border: 1px solid red
 }
 
-.flex-column {
+.flex-main__col {
   max-width: 430px;
   width: 48%;
 }
@@ -92,11 +104,11 @@ body {
     align-items: center;
     justify-content: center;
     width: 30%;
-    height: 35px;
+    height: 45px;
     font-family: $font-text-regular;
     @include adaptive-font(16, 14);
     color: $color-primary;
-    border: 1px solid $color-primary;
+    border: 1.7px solid $color-primary;
     border-radius: $border-radius-btn;
     transition: all .3s ease-in-out;
     background-color: $bg-color;
@@ -172,3 +184,266 @@ body {
 
 
 
+// ******** Resume Section starts ********
+.flex-resume {
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: space-between;
+}
+
+.flex-resume__block {
+  position: relative;
+  transform: translateX(-6%);
+  opacity: 0;
+  visibility: hidden;
+  padding-bottom: 40px;
+
+  transition: all 1.2s cubic-bezier(.29,.6,.44,1.15) .4s;
+
+  &:not(.flex-resume__block:first-child) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &:nth-child(2) {
+    transition-delay: .9s;
+  }
+
+  h4 {
+    font-family: $font-heading-bold;
+    @include adaptive-font(26, 22);
+    margin-bottom: 60px;
+  }
+
+  &:not(.flex-resume__block:first-child)::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #d7d7d7;
+  }
+}
+
+.flex-resume__block.anim-active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.flex-resume__row {
+  display: flex;
+  flex-direction: column;
+  &:not(.flex-resume__row:last-child) {
+    padding-bottom: 40px;
+  }
+}
+
+.resume-info {
+  display: flex;
+}
+
+.resume-info__when {
+  width: 30%;
+  span {
+    display: inline-block;
+    font-family: $font-text-light;
+    @include adaptive-font(16, 14);
+  }
+  a {
+    color: $color-primary;
+    font-family: $font-heading-bold;
+    @include adaptive-font(18, 18);
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+}
+
+.resume-info__when--skills {
+  span {
+    font-family: $font-text-light;
+    @include adaptive-font(18, 16);
+  }
+}
+
+.resume-info__what {
+  width: 70%;
+
+  h5 {
+    font-family: $font-heading-bold;
+    @include adaptive-font(18, 18);
+    margin-bottom: 10px;
+  }
+  p {
+    font-family: $font-text-regular;
+    @include adaptive-font(16, 15);
+    line-height: 1.6em;
+  }
+}
+
+.what-links {
+  display: flex;
+  margin-top: 20px;
+
+  a {
+    color: $color-primary;
+    font-family: $font-text-light;
+    @include adaptive-font(16, 14);
+    text-decoration: underline;
+
+    &:first-child {
+      margin-right: 20px;
+
+    }
+  }
+}
+
+.skill {
+  &:not(.skill:last-child) {
+    margin-bottom: 20px;
+  }
+  p {
+    font-family: $font-text-light;
+    @include adaptive-font(16, 14);
+  }
+}
+
+.skill-bar {
+  position: relative;
+  height: 6px;
+  background-color: #fff;
+  //background-color: #d7d7d7;
+  border-radius: 6px;
+}
+
+.skill-count {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 6px;
+  background-color: #6fd25a;
+  border-radius: 6px;
+
+  &--html {
+    width: 90%;
+  }
+  &--css {
+    width: 85%;
+  }
+  &--sass {
+    width: 70%;
+  }
+  &--cssanim {
+    width: 65%;
+  }
+  &--js {
+    width: 55%;
+  }
+  &--vue {
+    width: 35%;
+  }
+  &--react {
+    width: 10%;
+  }
+  &--jquery {
+    width: 55%;
+  }
+  &--boot {
+    width: 65%;
+  }
+  &--threejs {
+    width: 10%;
+  }
+  &--git {
+    width: 70%;
+  }
+  &--npm {
+    width: 70%;
+  }
+  &--figma {
+    width: 70%;
+  }
+  &--avocode {
+    width: 90%;
+  }
+  &--gulp {
+    width: 70%;
+  }
+  &--webpack {
+    width: 50%;
+  }
+
+  &::before {
+    position: absolute;
+    right: -26px;
+    top: 50%;
+    transform: translateY(-50%);
+    //bottom: 6px;
+    font-family: $font-text-light;
+    font-size: 14px;
+  }
+  &--html::before {
+    content: "90%";
+  }
+  &--css::before {
+    content: "85%";
+  }
+  &--sass::before {
+    content: "70%";
+  }
+  &--cssanim::before {
+    content: "65%";
+  }
+  &--js::before {
+    content: "55%";
+  }
+  &--vue::before {
+    content: "35%";
+  }
+  &--react::before {
+    content: "10%";
+  }
+  &--jquery::before {
+    content: "55%";
+  }
+  &--boot::before {
+    content: "60%";
+  }
+  &--threejs::before {
+    content: "10%";
+  }
+  &--git::before {
+    content: "70%";
+  }
+  &--npm::before {
+    content: "70%";
+  }
+  &--figma::before {
+    content: "85%";
+  }
+  &--avocode::before {
+    content: "90%";
+  }
+  &--gulp::before {
+    content: "70%";
+  }
+  &--webpack::before {
+    content: "50%";
+  }
+}
+
+/*@keyframes animated {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: matrix3d(0, 0, 0);
+  }
+}*/
+// ******** Resume Section ends ********

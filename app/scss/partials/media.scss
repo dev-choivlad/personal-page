@@ -2,13 +2,14 @@
   body.lock {
     overflow: hidden;
   }
+
   .main-content {
     padding: $padding-mob;
-    height: calc(100vh - 30px);
+    height: auto;
   }
   .main-content--first {
     padding: $padding-mob-first-section;
-    height: calc(100vh - 50px);
+    height: auto;
   }
   .main-header__nav {
     padding: $padding-header-footer-m;
@@ -61,6 +62,7 @@
   .main-footer {
     z-index: 4;
     position: relative;
+    bottom: 0;
   }
   .main-footer__content {
     flex-direction: column;
@@ -89,10 +91,10 @@
       height: 30px;
     }
   }
-  .flex-two-column {
+  .flex-main {
     flex-direction: column;
   }
-  .flex-column {
+  .flex-main__col {
     width: 100%;
   }
   .main-photo {
@@ -107,9 +109,57 @@
     }
   }
   .main-about__actions {
-    justify-content: space-around;
+    justify-content: space-between;
     a {
       width: 40%;
+    }
+  }
+  .flex-resume__block {
+    h4 {
+      @include adaptive-font(30, 28);
+      margin-bottom: 40px;
+    }
+  }
+  .flex-resume__row {
+    &:not(.flex-resume__row:last-child) {
+      padding-bottom: 30px;
+    }
+  }
+  .resume-info {
+    flex-direction: column;
+  }
+  .resume-info__when,
+  .resume-info__what {
+    width: 100%;
+  }
+  .resume-info__when {
+    //display: flex;
+    //align-items: flex-end;
+    //justify-content: space-between;
+    margin-bottom: 10px;
+    a {
+      @include adaptive-font(22, 20);
+      margin-bottom: 0;
+      //margin-right: 30px;
+    }
+    span {
+      line-height: 21px;
+      font-size: 16px;
+    }
+  }
+  .resume-info__when--skills {
+    span {
+      font-size: 18px;
+    }
+  }
+  .resume-info__what {
+    h5 {
+      //@include adaptive-font(18, 16);
+      font-family: $font-heading-medium;
+      margin-bottom: 5px;
+    }
+    p {
+      text-align: justify;
     }
   }
 }
@@ -149,6 +199,31 @@
   }
   .main-about__actions {
     a {
+      font-size: 16px;
+    }
+  }
+  .flex-resume__block {
+    h4 {
+      font-size: 26px;
+    }
+  }
+  .resume-info__when {
+    span {
+      font-size: 16px;
+    }
+  }
+  .resume-info__when--skills {
+    span {
+      font-size: 18px;
+    }
+  }
+  .resume-info__what {
+    h5 {
+      font-size: 18px;
+    }
+  }
+  .skill {
+    p {
       font-size: 16px;
     }
   }

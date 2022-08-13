@@ -8,7 +8,7 @@ const paths = require('../paths');
 
 const jsFiles = [
   //'./././app/js/swiper-init.js',
-  //'./././app/js/anim-on-scroll.js',
+  './././app/js/anim-on-scroll.js',
   './././app/js/nav-btn-states-toggle.js',
   './././app/js/burger.js',
   './././app/js/anchor-scrolling.js',

@@ -2,6 +2,20 @@ body {
   background-color: $bg-color;
 }
 
+.visually-hidden {
+  position: absolute;
+  top: -250%;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+}
+
 .img-basic {
   display: block;
   width: 100%;
@@ -24,13 +38,11 @@ body {
 }
 
 .main-content {
+  position: relative;
   max-width: $max-width;
   width: 100%;
-  //height: calc(100vh - 130px);
-  //height: 25%;
   margin: 0 auto;
   padding: $padding-desk;
-  //overflow-y: auto;
 }
 
 .main-content--first {
@@ -53,6 +65,10 @@ body {
   //height: 60vh;
 }
 
+.main-content--fourth {
+  padding-bottom: 140px;
+}
+
 .section-block {
   position: relative;
   max-width: 1000px;
@@ -60,6 +76,7 @@ body {
   margin: 0 auto;
 
   h4 {
+    position: relative;
     font-family: $font-heading-bold;
     @include adaptive-font(26, 22);
     margin-bottom: 60px;

@@ -27,17 +27,20 @@
 
         <div class="main-about__actions">
           <a href="#">Download cv</a>
-          <a href="#contacts">Contact me
+          <a href="#contact">Contact me
           </a>
         </div>
       </div>
     </section>
   </div>
 
-  <div class="main-content main-content--second" id="resume">
+  <div class="main-content main-content--second">
+    <!--<div class="visually-hidden" id="resume"></div>-->
     <section class="section-block flex-resume">
       <div class="flex-resume__block anim-item anim-no-hide">
-        <h4>Experience</h4>
+        <h4>Experience
+          <span class="visually-hidden" id="resume"></span>
+        </h4>
 
         <div class="flex-resume__row">
           <div class="resume-info">
@@ -304,9 +307,13 @@
     </section>
   </div>
 
-  <div class="main-content main-content--third" id="projects">
+  <div class="main-content main-content--third">
+    <div class="visually-hidden"></div>
     <div class="section-block flex-projects">
-      <h4>Projects</h4>
+      <h4>
+        Projects
+        <span class="visually-hidden" id="projects"></span>
+      </h4>
       <div class="js-slider js-slider--1">
         <div class="js-slider__item">
           <div class="half half-left">
@@ -432,7 +439,40 @@
     </div>
   </div>
 
-  <div class="main-content" id="contacts" style="height: 100vh">
-    // Contacts
+  <div class="main-content main-content--fourth">
+    <div class="section-block flex-contact">
+      <h4>
+        Contact
+        <span class="visually-hidden" id="contact"></span>
+      </h4>
+
+      <div class="form-wrapper">
+        <form class="contact-form" id="form" method="post" action="">
+          <div class="contact-form__field">
+            <label for="input-name">Full Name</label>
+
+            <input type="text" name="Name" id="input-name">
+          </div>
+
+          <div class="contact-form__field">
+            <label for="input-email">Email</label>
+
+            <input type="email" name="Email" id="input-email">
+          </div>
+
+          <div class="contact-form__field">
+            <label for="input-message">Message</label>
+
+            <textarea name="message" id="input-message" rows="10"></textarea>
+          </div>
+
+          <div class="contact-form__field">
+            <button class="contact-form__submit" type="submit">Submit</button>
+
+            <p class="contact-form__response"></p>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,126 @@
+/* ---------- JS-SLIDER STARTS ---------- */
+.js-slider {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  //border: 1px solid red;
+}
+
+.js-slider__item {
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.6s;
+  animation-name: fade;
+  animation-duration: 1.6s;
+
+  a {
+    max-width: 640px;
+    max-height: 426px;
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+        filter: grayscale(0);
+      }
+    }
+  }
+}
+
+.js-slider__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $border-radius-btn;
+  -webkit-filter: grayscale(0.8);
+  filter: grayscale(0.8);
+  transition: all .2s ease-in-out;
+}
+
+.js-slider__arrow {
+  position:absolute;
+  display: flex;
+
+  align-items: center;
+  @include centering-y();
+  cursor: pointer;
+
+  width: 50px;
+  color: $color-primary;
+  // color: white;
+  font-weight: bold;
+  font-size: 30px;
+  border-radius: 0 3px 3px 0;
+
+  transition: color 0.6s ease;
+
+  &:hover {
+    color: gray;
+  }
+}
+
+.arrow-prev {
+  justify-content: flex-start;
+  left: 0;
+}
+
+.arrow-next {
+  justify-content: flex-end;
+  right: 0;
+}
+
+.js-slider__triggers {
+  text-align: center;
+  //margin-top: 25px;
+}
+
+.js-slider__trigger {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #0185cc;
+  background-color: #fff;
+  cursor: pointer;
+
+  transition: background-color 0.6s ease;
+
+  &:active,
+  &:hover {
+    background-color: #0185cc;
+  }
+
+  &:not(.js-slider__trigger:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.js-slider__trigger.active {
+  background-color: #0185cc;
+}
+
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+  to {
+    opacity: 1
+  }
+}
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+  to {
+    opacity: 1
+  }
+}
+/* ---------- JS-SLIDER ENDS ------------ */

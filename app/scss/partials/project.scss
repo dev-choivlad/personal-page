@@ -46,11 +46,24 @@ body {
   //overflow: scroll;
 }
 
+.main-content--third {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //height: 60vh;
+}
+
 .section-block {
   position: relative;
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
+
+  h4 {
+    font-family: $font-heading-bold;
+    @include adaptive-font(26, 22);
+    margin-bottom: 60px;
+  }
 }
 
 .flex-main {
@@ -212,11 +225,11 @@ body {
     transition-delay: .9s;
   }
 
-  h4 {
+/*  h4 {
     font-family: $font-heading-bold;
     @include adaptive-font(26, 22);
     margin-bottom: 60px;
-  }
+  }*/
 
   &:not(.flex-resume__block:first-child)::before {
     position: absolute;
@@ -325,7 +338,9 @@ body {
   left: 0;
   display: block;
   height: 6px;
-  background-color: #6fd25a;
+  //background-color: #6fd25a;
+  background: rgb(52,184,24);
+  background: linear-gradient(90deg, rgba(52,184,24,1) 0%, rgba(140,239,116,1) 65%, rgba(181,245,161,1) 100%);
   border-radius: 6px;
 
   &--html {
@@ -447,3 +462,46 @@ body {
   }
 }*/
 // ******** Resume Section ends ********
+
+
+// ******** Projects Section starts ********
+.main-content--third {}
+
+.flex-projects {
+/*  display: flex;
+  justify-content: center;
+  align-items: center;*/
+}
+
+.half-left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 230px;
+
+  span {
+    display: block;
+    font-family: $font-heading-bold;
+    @include adaptive-font(18, 18);
+  }
+  p {
+    font-family: $font-text-regular;
+    @include adaptive-font(16, 15);
+    line-height: 1.6em;
+  }
+  a {
+    display: inline-block;
+    font-family: $font-text-light;
+    @include adaptive-font(16, 14);
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+.half-right {
+  width: 45%;
+  border-radius: $border-radius-btn;
+  overflow: hidden;
+}
+// ******** Projects Section ends ********

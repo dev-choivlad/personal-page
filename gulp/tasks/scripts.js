@@ -7,12 +7,11 @@ const mode = require('gulp-mode')();
 const paths = require('../paths');
 
 const jsFiles = [
-  //'./././app/js/swiper-init.js',
+  './././app/js/js-slider.js',
   './././app/js/anim-on-scroll.js',
   './././app/js/nav-btn-states-toggle.js',
   './././app/js/burger.js',
   './././app/js/anchor-scrolling.js',
-  //'./././app/js/dynamic-adaptive.js',
 ] // очередность подключения файлов
 
 const scripts = () => {

@@ -12,38 +12,58 @@
 }
 
 .contact-form__field {
+  position: relative;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 27px;
+}
 
-  label,
-  input,
-  textarea {
-    display: block;
-    width: 100%;
-    background-color: $bg-color;
+.form-action {
+  display: flex;
+  align-items: center;
+}
+
+.form-response {
+  display: block;
+  color: #ff8054;
+  font-family: $font-text-light;
+  font-size: 15px;
+  transition: all .4s ease-in-out;
+
+  visibility: visible;
+  opacity: 1;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.contact-form__label {
+  font-family: $font-text-light;
+  @include adaptive-font(16, 14);
+  margin-bottom: 5px;
+}
+
+.contact-form__input,
+.contact-form__label {
+  display: block;
+  width: 100%;
+  background-color: $bg-color;
+}
+
+.contact-form__input {
+  border: 1px solid #c7c7c7;
+  padding: 10px;
+  border-radius: $border-radius-btn;
+  font-family: $font-text-light;
+  transition: border-color .2s ease;
+  font-size: 15px;
+
+  &--error {
+    border-color: #ff8054;
   }
 
-  label {
-    font-family: $font-text-light;
-    @include adaptive-font(16, 14);
-    margin-bottom: 5px;
-  }
-
-  input,
-  textarea {
-    border: 1px solid #c7c7c7;
-    padding: 10px;
-    border-radius: $border-radius-btn;
-    font-family: $font-text-light;
-    transition: border-color .2s ease;
-    font-size: 15px;
-
-    &:focus {
-      border-color: #9d9d9d;
-    }
-  }
-  textarea {
-    overflow: auto;
+  &:focus {
+    border-color: #9d9d9d;
   }
 }
 
@@ -51,8 +71,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25%;
-  height: 38px;
+  width: 27%;
+  height: 40px;
   font-family: $font-text-light;
   @include adaptive-font(16, 14);
   color: $color-primary;
@@ -70,4 +90,26 @@
   }
 }
 
-.contact-form__response {}
+
+.error-message {
+  position: absolute;
+  top: 95%;
+  display: block;
+  font-family: $font-text-light;
+  font-size: 13px;
+  color: #ff8054;
+  padding: 5px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: all .4s ease-in-out;
+
+  &--text {
+    top: 98.5%;
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}

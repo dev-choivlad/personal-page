@@ -12,6 +12,7 @@ const jsFiles = [
   './././app/js/nav-btn-states-toggle.js',
   './././app/js/burger.js',
   './././app/js/anchor-scrolling.js',
+  './././app/js/contact-form.js',
 ] // очередность подключения файлов
 
 const scripts = () => {

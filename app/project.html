@@ -35,7 +35,6 @@
   </div>
 
   <div class="main-content main-content--second">
-    <!--<div class="visually-hidden" id="resume"></div>-->
     <section class="section-block flex-resume">
       <div class="flex-resume__block anim-item anim-no-hide">
         <h4>Experience
@@ -447,29 +446,39 @@
       </h4>
 
       <div class="form-wrapper">
-        <form class="contact-form" id="form" method="post" action="">
-          <div class="contact-form__field">
-            <label for="input-name">Full Name</label>
+        <form class="contact-form" id="form" method="post" action="send-mail.php" novalidate>
 
-            <input type="text" name="Name" id="input-name">
+          <!-- name -->
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="input-name">Full Name</label>
+
+            <input class="contact-form__input" id="input-name" type="text" name="userName" minlength="2" maxlength="30" required="required">
+
+            <span class="error-message"></span>
           </div>
 
+          <!-- email -->
           <div class="contact-form__field">
-            <label for="input-email">Email</label>
+            <label class="contact-form__label" for="input-email">Email</label>
 
-            <input type="email" name="Email" id="input-email">
+            <input class="contact-form__input" id="input-email" type="email" name="userEmail" required="required">
+
+            <span class="error-message"></span>
           </div>
 
+          <!-- text -->
           <div class="contact-form__field">
-            <label for="input-message">Message</label>
+            <label class="contact-form__label" for="input-message">Message</label>
 
-            <textarea name="message" id="input-message" rows="10"></textarea>
+            <textarea class="contact-form__input" id="input-message" name="userMessage" rows="10" minlength="20" maxlength="500" required="required"></textarea>
+
+            <span class="error-message error-message--text"></span>
           </div>
 
-          <div class="contact-form__field">
+          <div class="contact-form__field form-action">
             <button class="contact-form__submit" type="submit">Submit</button>
 
-            <p class="contact-form__response"></p>
+            <span class="form-response"></span>
           </div>
         </form>
       </div>

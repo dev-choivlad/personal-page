@@ -15,7 +15,7 @@ $name = trim($name);
 $email = trim($email);
 $message = trim($message);
 
-if(mail("dev.choivlad@gmail.com", "Request from personal page", "Sender:".$name.". E-mail: ".$email." Message: ".$message ,"From: info@choivlad.site \r\n")) {
+if(mail("dev.choivlad@gmail.com", "Request from personal page", "Sender:".$name.". E-mail: ".$email." Message: ".$message ,"From: hey@choivlad.com \r\n")) {
 echo "The message has been submitted"
 } else {"Something went wrong"}
 

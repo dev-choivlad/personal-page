@@ -19,7 +19,7 @@
       this.registerEventsHandler();
     }
 
-    static patternName = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/;
+    static patternName = /^[a-zA-Z\s]+$/;
     static patternEmail = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z])+$/;
     static errorMessages = [
       "This field is required",
@@ -30,7 +30,29 @@
     ];
     static getElement(elem) {
       return elem.nextElementSibling;
-    }
+    };
+
+    resetForm() {
+      for (let field of this.fields) {
+          field.value = ""
+      }
+    };
+
+    disableFormElems() {
+      this.button.setAttribute("disabled", "disabled");
+
+      for (let field of this.fields) {
+        field.setAttribute("disabled", "disabled");
+      }
+    };
+
+    enableFormElems() {
+      this.button.removeAttribute("disabled");
+
+      for (let field of this.fields) {
+        field.removeAttribute("disabled");
+      }
+    };
 
     registerEventsHandler() {
       // Запуск валидации формы при нажатии кнопки Submit
@@ -55,8 +77,8 @@
 
     validForm(e) {
       e.preventDefault();
-      const formData = new FormData(this.form);
 
+      const formData = new FormData(this.form);
       let errorText;
 
       for (let property of formData.keys()) {
@@ -93,22 +115,22 @@
     getError(formData, property) {
       let error = "";
       const validate = {
-        userName: () => {
-          if (formData.get("userName").length < 2 || Form.patternName.test(formData.get("userName")) === false) {
+        name: () => {
+          if (formData.get("name").length < 2 || Form.patternName.test(formData.get("name")) === false) {
             error = Form.errorMessages[1];
           }
         },
 
-        userEmail: () => {
-          if (formData.get("userEmail").length === 0) {
+        email: () => {
+          if (formData.get("email").length === 0) {
             error = Form.errorMessages[2];
-          } else if (Form.patternEmail.test(formData.get("userEmail")) === false) {
+          } else if (Form.patternEmail.test(formData.get("email")) === false) {
             error = Form.errorMessages[3];
           }
         },
 
-        userMessage: () => {
-          if (formData.get("userMessage").length === 0) {
+        message: () => {
+          if (formData.get("message").length === 0) {
             error = Form.errorMessages[4];
           }
         }
@@ -136,58 +158,63 @@
     }
 
     sendFormData(formData) {
-      console.log("The form is submitted")
+      //console.log("sendFormData func!");
+
+      this.disableFormElems();
+
+      setTimeout(function() {
+        this.enableFormElems();
+        this.formResponceBox.innerHTML = "Oops! Something went wrong. Try again.";
+        this.formResponceBox.classList.add("active");
+      }.bind(this), 1500);
+
+      setTimeout(() => {
+        this.formResponceBox.innerHTML = "";
+        this.formResponceBox.classList.remove("active");
+      }, 4500);
 
       let xhr = new XMLHttpRequest();
 
-      xhr.open("POST", "/send-mail.php", true);
+      xhr.open("POST", "/sendmail.php");
 
-      xhr.onreadystatechange = () => {
+      xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            for (let field of this.fields) {
-              setTimeout(() => {
-                for (let field of this.fields) {
-                  field.value = ""
-                }
-              }, 1500)
-            }
+            setTimeout(function() {
+              this.enableFormElems();
+              this.resetForm();
+              this.button.classList.add("submitted")
+              this.button.innerHTML = "Done";
+            }.bind(this), 1500);
 
             setTimeout(() => {
-              this.button.innerHTML = "Sent"
-            }, 3000)
-            setTimeout(() => {
-              this.button.innerHTML = "Submit"
-            }, 6000)
-          } else {
-            setTimeout(() => {
-              this.formResponceBox.innerHTML = "Something went wrong. Try again."
-              this.formResponceBox.classList.add("active")
-            }, 2000)
-            setTimeout(() => {
-              this.formResponceBox.classList.remove("active")
-            }, 5000)
+              this.button.classList.remove("submitted")
+              this.button.innerHTML = "Submit";
+            }, 4500);
           }
-        } else {
-          setTimeout(() => {
-            this.formResponceBox.innerHTML = "Something went wrong. Try again."
-            this.formResponceBox.classList.add("active")
-          }, 2000)
-          setTimeout(() => {
-            this.formResponceBox.classList.remove("active")
-          }, 5000)
-        }
-      }
+          if (xhr.status === 500) {
+            setTimeout(function() {
+              this.enableFormElems();
+              this.formResponceBox.innerHTML = "Oops! Something went wrong. Try again.";
+              this.formResponceBox.classList.add("active");
+            }.bind(this), 1500);
 
+            setTimeout(() => {
+              this.formResponceBox.innerHTML = "";
+              this.formResponceBox.classList.remove("active");
+            }, 4500);
+          }
+        }
+      };
       xhr.send(formData);
+      console.log("the form has been submitted!")
     }
   }
 
-  // forms collection
+  // Get forms collection
   const forms = document.querySelectorAll(".contact-form");
-
   if (!forms) return;
-
+  // Form initializing
   for (let form of forms) {
     const f = new Form(form);
   }

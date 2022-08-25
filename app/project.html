@@ -22,7 +22,7 @@
         </p>
 
         <div class="main-about__actions">
-          <a href="#">Download cv</a>
+          <a href="cv-choivlad.pdf" target="_blank">Download cv</a>
           <a href="#contact">Contact me
           </a>
         </div>
@@ -445,13 +445,13 @@
       </h4>
 
       <div class="form-wrapper">
-        <form class="contact-form" id="form" method="post" action="send-mail.php" novalidate>
+        <form class="contact-form" id="form" name="feedback" method="POST" action="sendmail.php" novalidate>
 
           <!-- name -->
           <div class="contact-form__field">
-            <label class="contact-form__label" for="input-name">Full Name</label>
+            <label class="contact-form__label" for="input-name">Name</label>
 
-            <input class="contact-form__input" id="input-name" type="text" name="userName" minlength="2" maxlength="30" required="required">
+            <input class="contact-form__input" id="input-name" type="text" name="name" minlength="2" maxlength="30" required="required">
 
             <span class="error-message"></span>
           </div>
@@ -460,7 +460,7 @@
           <div class="contact-form__field">
             <label class="contact-form__label" for="input-email">Email</label>
 
-            <input class="contact-form__input" id="input-email" type="email" name="userEmail" required="required">
+            <input class="contact-form__input" id="input-email" type="email" name="email" required="required">
 
             <span class="error-message"></span>
           </div>
@@ -469,7 +469,7 @@
           <div class="contact-form__field">
             <label class="contact-form__label" for="input-message">Message</label>
 
-            <textarea class="contact-form__input" id="input-message" name="userMessage" rows="10" minlength="20" maxlength="500" required="required"></textarea>
+            <textarea class="contact-form__input" id="input-message" name="message" rows="10" minlength="20" maxlength="500" required="required"></textarea>
 
             <span class="error-message error-message--text"></span>
           </div>

@@ -158,20 +158,9 @@
     }
 
     sendFormData(formData) {
+      const that = this;
       //console.log("sendFormData func!");
-
       this.disableFormElems();
-
-      setTimeout(function() {
-        this.enableFormElems();
-        this.formResponceBox.innerHTML = "Oops! Something went wrong. Try again.";
-        this.formResponceBox.classList.add("active");
-      }.bind(this), 1500);
-
-      setTimeout(() => {
-        this.formResponceBox.innerHTML = "";
-        this.formResponceBox.classList.remove("active");
-      }, 4500);
 
       let xhr = new XMLHttpRequest();
 
@@ -180,28 +169,28 @@
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            setTimeout(function() {
-              this.enableFormElems();
-              this.resetForm();
-              this.button.classList.add("submitted")
-              this.button.innerHTML = "Done";
-            }.bind(this), 1500);
+            setTimeout(() => {
+              that.enableFormElems();
+              that.resetForm();
+              that.button.classList.add("submitted")
+              that.button.innerHTML = "Done";
+            }, 1500);
 
             setTimeout(() => {
-              this.button.classList.remove("submitted")
-              this.button.innerHTML = "Submit";
+              that.button.classList.remove("submitted")
+              that.button.innerHTML = "Submit";
             }, 4500);
           }
           if (xhr.status === 500) {
-            setTimeout(function() {
-              this.enableFormElems();
-              this.formResponceBox.innerHTML = "Oops! Something went wrong. Try again.";
-              this.formResponceBox.classList.add("active");
-            }.bind(this), 1500);
+            setTimeout(() => {
+              that.enableFormElems();
+              that.formResponceBox.innerHTML = "Oops! Something went wrong. Try again.";
+              that.formResponceBox.classList.add("active");
+            }, 1500);
 
             setTimeout(() => {
-              this.formResponceBox.innerHTML = "";
-              this.formResponceBox.classList.remove("active");
+              that.formResponceBox.innerHTML = "";
+              that.formResponceBox.classList.remove("active");
             }, 4500);
           }
         }

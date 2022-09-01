@@ -14,7 +14,11 @@
 .contact-form__field {
   position: relative;
   width: 100%;
-  margin-bottom: 27px;
+  margin-bottom: 30px;
+
+  &--captcha {
+    margin-bottom: 60px;
+  }
 }
 
 .form-action {
@@ -116,6 +120,7 @@
   font-size: 13px;
   color: #ff8054;
   padding: 5px;
+  margin-top: 2px;
 
   visibility: hidden;
   opacity: 0;
@@ -130,3 +135,4 @@
     opacity: 1;
   }
 }
+

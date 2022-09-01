@@ -12,6 +12,9 @@
       // Контейнер с сообщением о том, как прошла отправка формы
       this.formResponceBox = this.form.querySelector(".form-response")
 
+      // Контейнер с сообщением об ошибке капчи
+      this.captchaResponseBox = this.form.querySelector(".error-message--captcha")
+
       // Флаг ошибки валидации
       this.isError = false;
 
@@ -19,7 +22,7 @@
       this.registerEventsHandler();
     }
 
-    static patternName = /^[a-zA-Z\s]+$/;
+    static patternName = /^[a-zA-Zа-яёА-ЯЁ\s]+$/;
     static patternEmail = /^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z])+$/;
     static errorMessages = [
       "This field is required",
@@ -81,6 +84,8 @@
       const formData = new FormData(this.form);
       let errorText;
 
+      formData.delete("g-recaptcha-response");
+
       for (let property of formData.keys()) {
         errorText = this.getError(formData, property);
         if (errorText.length === 0) continue;
@@ -134,7 +139,7 @@
             error = Form.errorMessages[4];
           }
         }
-      }
+      };
       validate[property]();
       return error;
     }
@@ -159,44 +164,63 @@
 
     sendFormData(formData) {
       const that = this;
-      //console.log("sendFormData func!");
-      this.disableFormElems();
+      const captcha = grecaptcha.getResponse();
 
-      let xhr = new XMLHttpRequest();
+      if (!captcha.length) {
+        this.captchaResponseBox.innerHTML = "Could you please complete the captcha";
+        this.captchaResponseBox.classList.add("active");
 
-      xhr.open("POST", "/sendmail.php");
+        setTimeout(() => {
+          this.captchaResponseBox.classList.remove("active");
+          this.captchaResponseBox.innerHTML = "";
+        }, 3000);
+      }
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            setTimeout(() => {
-              that.enableFormElems();
-              that.resetForm();
-              that.button.classList.add("submitted")
-              that.button.innerHTML = "Done";
-            }, 1500);
+      if(captcha.length) {
+        this.disableFormElems();
 
-            setTimeout(() => {
-              that.button.classList.remove("submitted")
-              that.button.innerHTML = "Submit";
-            }, 4500);
+        let xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "/sendmail.php");
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              setTimeout(() => {
+                that.enableFormElems();
+                that.resetForm();
+                that.button.classList.add("submitted")
+                that.button.innerHTML = "Done";
+              }, 1500);
+
+              setTimeout(() => {
+                that.button.classList.remove("submitted")
+              }, 4500);
+
+              setTimeout(() => {
+                that.button.innerHTML = "Submit";
+              }, 4600)
+            }
+            if (xhr.status === 500) {
+              setTimeout(() => {
+                that.enableFormElems();
+                that.formResponceBox.innerHTML = "Oops! Something went wrong. Try again.";
+                that.formResponceBox.classList.add("active");
+
+                captcha.reset();
+              }, 1500);
+
+              setTimeout(() => {
+                that.formResponceBox.innerHTML = "";
+                that.formResponceBox.classList.remove("active");
+              }, 4500);
+            }
           }
-          if (xhr.status === 500) {
-            setTimeout(() => {
-              that.enableFormElems();
-              that.formResponceBox.innerHTML = "Oops! Something went wrong. Try again.";
-              that.formResponceBox.classList.add("active");
-            }, 1500);
-
-            setTimeout(() => {
-              that.formResponceBox.innerHTML = "";
-              that.formResponceBox.classList.remove("active");
-            }, 4500);
-          }
-        }
-      };
-      xhr.send(formData);
-      console.log("the form has been submitted!")
+        };
+        xhr.send(formData);
+        grecaptcha.reset();
+        console.log("the form has been submitted!")
+      }
     }
   }
 
